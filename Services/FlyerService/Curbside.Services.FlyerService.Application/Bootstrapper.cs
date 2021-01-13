@@ -1,6 +1,7 @@
 ﻿using Curbside.Services.Shared.CQRS;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using FluentValidation;
 
 namespace Curbside.Services.FlyerService.Application
 {
@@ -10,6 +11,7 @@ namespace Curbside.Services.FlyerService.Application
         {
             var assembly = Assembly.GetExecutingAssembly();
             services.ConfigureCQRS(assembly);
+            services.AddValidatorsFromAssembly(assembly);
         }
     }
 }

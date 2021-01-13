@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Curbside.Services.Shared.CQRS.Commands
 {
-    public interface ICommandHandler<TCommand> where TCommand : ICommand
+    public interface ICommandResult
     {
-        public Task<ICommandResult> Handle(TCommand command);
+        public bool IsSuccess { get; }
     }
 }

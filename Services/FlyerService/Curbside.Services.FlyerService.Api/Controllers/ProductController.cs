@@ -1,9 +1,6 @@
 ﻿using Curbside.Services.FlyerService.Application.Products.Commands.CreateProduct;
 using Curbside.Services.Shared.CQRS.Commands;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Curbside.Services.FlyerService.Api.Controllers
@@ -20,9 +17,9 @@ namespace Curbside.Services.FlyerService.Api.Controllers
         }
 
         [HttpPost]
-        public async Task CreateProduct(CreateProductCommand command)
+        public async Task<ICommandResult> CreateProduct(CreateProductCommand command)
         {
-            await _commandDispatcher.Execute(command);
+            return await _commandDispatcher.Execute(command);
         }
     }
 }
