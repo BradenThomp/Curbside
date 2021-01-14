@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Curbside.Services.Shared.CQRS.Commands
+namespace Curbside.Services.Shared.CQRS.Queries
 {
-    public interface ICommandResult
+    public interface IQuery
     {
-        public bool IsSuccess { get; }
     }
 }

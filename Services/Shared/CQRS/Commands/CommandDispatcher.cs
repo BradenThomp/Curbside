@@ -14,10 +14,17 @@ namespace Curbside.Services.Shared.CQRS.Commands
             _serviceProvider = serviceProvider;
         }
 
-        public async Task<ICommandResult> Execute<TCommand>(TCommand command) where TCommand : ICommand
+        public async Task Execute<TCommand>(TCommand command) where TCommand : ICommand
         {
             var service = this._serviceProvider.GetService(typeof(ICommandHandler<TCommand>)) as ICommandHandler<TCommand>;
+            await service.Handle(command);
+        }
+
+        public async Task<TResponse> Execute<TCommand, TResponse>(TCommand command) where TCommand : ICommand
+        {
+            var service = this._serviceProvider.GetService(typeof(ICommandHandler<TCommand, TResponse>)) as ICommandHandler<TCommand, TResponse>;
             return await service.Handle(command);
         }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Curbside.Services.Shared.CQRS.Commands;
+using Curbside.Services.Shared.CQRS.Queries;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
@@ -11,8 +12,11 @@ namespace Curbside.Services.Shared.CQRS
         public static void ConfigureCQRS(this IServiceCollection services, Assembly assembly)
         {
             services.ResolveHanders(assembly, typeof(ICommandHandler<>));
+            services.ResolveHanders(assembly, typeof(ICommandHandler<,>));
+            services.ResolveHanders(assembly, typeof(IQueryHandler<,>));
 
             services.AddScoped<ICommandDispatcher, CommandDispatcher>();
+            services.AddScoped<IQueryDispatcher, QueryDispatcher>();
         }
 
         private static void ResolveHanders(this IServiceCollection services, Assembly assembly, Type handlerInterface)

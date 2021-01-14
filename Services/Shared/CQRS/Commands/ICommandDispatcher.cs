@@ -7,6 +7,8 @@ namespace Curbside.Services.Shared.CQRS.Commands
 {
     public interface ICommandDispatcher
     {
-        Task<ICommandResult> Execute<TCommand>(TCommand command) where TCommand : ICommand;
+        Task Execute<TCommand>(TCommand command) where TCommand : ICommand;
+
+        Task<TResponse> Execute<TCommand, TResponse>(TCommand command) where TCommand : ICommand;
     }
 }

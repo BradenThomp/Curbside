@@ -1,6 +1,8 @@
 ﻿using Curbside.Services.Shared.CQRS.Commands;
-using System.Linq;
+using FluentValidation;
+using System;
 using System.Threading.Tasks;
+using ValidationException = Curbside.Services.FlyerService.Application.Common.Exceptions.ValidationException;
 
 namespace Curbside.Services.FlyerService.Application.Products.Commands.CreateProduct
 {
@@ -10,25 +12,26 @@ namespace Curbside.Services.FlyerService.Application.Products.Commands.CreatePro
         public string Name { get; set; }
     }
 
-    public class CreateProductCommandHandler : ICommandHandler<CreateProductCommand>
+    public class CreateProductCommandHandler : ICommandHandler<CreateProductCommand, Guid>
     {
-        private readonly CreateProductCommandValidator _validator;
+
+        private readonly AbstractValidator<CreateProductCommand> _validator;
 
         public CreateProductCommandHandler(CreateProductCommandValidator validator)
         {
             _validator = validator;
         }
 
-        public async Task<ICommandResult> Handle(CreateProductCommand command)
+        public async Task<Guid> Handle(CreateProductCommand command)
         {
-            var validationResult = await _validator.ValidateAsync(command);
+            var validation = await _validator.ValidateAsync(command);
 
-            if (!validationResult.IsValid)
+            if (!validation.IsValid)
             {
-                return new CommandFailedResult(validationResult.Errors.Select(e => e.ToString()));
+                throw new ValidationException(validation.Errors);
             }
 
-            return null;
+            return new Guid();
         }
     }
 }
