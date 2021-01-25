@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\CQRS\Curbside.Services.Shared.CQRS.csproj" />
+    <ProjectReference Include="..\..\Shared\CQRS\CQRS.csproj" />
     <ProjectReference Include="..\Curbside.Services.FlyerService.Application\Curbside.Services.FlyerService.Application.csproj" />
   </ItemGroup>
 

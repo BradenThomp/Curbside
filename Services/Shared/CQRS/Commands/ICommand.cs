@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using CQRS.Common;
 
-namespace Curbside.Services.Shared.CQRS.Commands
+namespace CQRS.Commands
 {
-    public interface ICommand
+    /// <summary>
+    /// Interface for a command. Commands change system state and should not query data (Create Update Delete).
+    /// However, commands can and should return a result that indicates the systems state.
+    /// </summary>
+    public interface ICommand : IRequest
     {
     }
 }

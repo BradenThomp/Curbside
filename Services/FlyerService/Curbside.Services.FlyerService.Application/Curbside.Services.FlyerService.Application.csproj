@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\CQRS\Curbside.Services.Shared.CQRS.csproj" />
+    <ProjectReference Include="..\..\Shared\CQRS\CQRS.csproj" />
   </ItemGroup>
 
 </Project>

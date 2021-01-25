@@ -1,7 +1,5 @@
-﻿using Curbside.Services.FlyerService.Application.Common.Models;
-using Curbside.Services.FlyerService.Application.Products.Commands.CreateProduct;
-using Curbside.Services.Shared.CQRS.Commands;
-using Microsoft.AspNetCore.Http;
+﻿using Curbside.Services.FlyerService.Application.Products.Commands.CreateProduct;
+using CQRS.Common;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System;
@@ -12,17 +10,17 @@ namespace Curbside.Services.FlyerService.Api.Controllers
     [Route("[controller]")]
     public class ProductController
     {
-        private readonly ICommandDispatcher _commandDispatcher;
+        private readonly IDispatcher _dispatcher;
 
-        public ProductController(ICommandDispatcher commandDispatcher)
+        public ProductController(IDispatcher dispatcher)
         {
-            _commandDispatcher = commandDispatcher;
+            _dispatcher = dispatcher;
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateProduct([FromBody] CreateProductCommand command)
         {
-            var result = await _commandDispatcher.Execute<CreateProductCommand, Guid>(command);
+            var result = await _dispatcher.Execute<CreateProductCommand, Guid>(command);
 
             return new JsonResult(result);
         }

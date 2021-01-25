@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CQRS.Common;
 
-namespace Curbside.Services.Shared.CQRS.Queries
+namespace CQRS.Queries
 {
-    public interface IQuery
+    /// <summary>
+    /// Interface for a query. Queries read system data and should not update the systems state (Read).
+    /// </summary>
+    public interface IQuery : IRequest
     {
     }
 }

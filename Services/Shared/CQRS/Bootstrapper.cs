@@ -1,5 +1,4 @@
-﻿using Curbside.Services.Shared.CQRS.Commands;
-using Curbside.Services.Shared.CQRS.Queries;
+﻿using CQRS.Common;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
@@ -7,18 +6,29 @@ using System.Reflection;
 
 namespace Curbside.Services.Shared.CQRS
 {
+    /// <summary>
+    /// Bootstrapper to setup the CQRS Framework.
+    /// </summary>
     public static class Bootstrapper
     {
+        /// <summary>
+        /// Resolves all handlers and adds dispatcher.
+        /// </summary>
+        /// <param name="services">The Service Collection.</param>
+        /// <param name="assembly">The assembly to scan for handlers.</param>
         public static void ConfigureCQRS(this IServiceCollection services, Assembly assembly)
         {
-            services.ResolveHanders(assembly, typeof(ICommandHandler<>));
-            services.ResolveHanders(assembly, typeof(ICommandHandler<,>));
-            services.ResolveHanders(assembly, typeof(IQueryHandler<,>));
+            services.ResolveHanders(assembly, typeof(IRequestHandler<,>));
 
-            services.AddScoped<ICommandDispatcher, CommandDispatcher>();
-            services.AddScoped<IQueryDispatcher, QueryDispatcher>();
+            services.AddScoped<IDispatcher, Dispatcher>();
         }
 
+        /// <summary>
+        /// Resolves all handlers.
+        /// </summary>
+        /// <param name="services">The service collection to add to.</param>
+        /// <param name="assembly">The assembly to scan for handlers.</param>
+        /// <param name="handlerInterface">The handler type to resolve.</param>
         private static void ResolveHanders(this IServiceCollection services, Assembly assembly, Type handlerInterface)
         {
             var types = assembly.GetTypes();

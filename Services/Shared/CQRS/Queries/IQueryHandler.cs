@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CQRS.Common;
 
-namespace Curbside.Services.Shared.CQRS.Queries
+namespace CQRS.Queries
 {
-    public interface IQueryHandler<TQuery, TResult> where TQuery : IQuery
+    /// <summary>
+    /// Handler for queries that read system data.
+    /// </summary>
+    /// <typeparam name="TQuery">The query to be executed.</typeparam>
+    /// <typeparam name="TResponse">The response.</typeparam>
+    public interface IQueryHandler<TQuery, TResponse> : IRequestHandler<TQuery, TResponse> where TQuery : IQuery
     {
-        public Task<TResult> Handle(TQuery query);
+
     }
 }
