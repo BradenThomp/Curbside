@@ -3,15 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Curbside.Services.FlyerService.Api", "FlyerService\Curbside.Services.FlyerService.Api\Curbside.Services.FlyerService.Api.csproj", "{1B256174-54F9-4C94-B819-B5347D890FC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService", "ProductService\ProductService.csproj", "{9B566CB2-E570-4330-9D5C-86ADA22A172A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FlyerService", "FlyerService", "{9D2D8847-D2F9-419B-8A14-CDD5688DFC13}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Curbside.Services.FlyerService.Application", "FlyerService\Curbside.Services.FlyerService.Application\Curbside.Services.FlyerService.Application.csproj", "{D52D3875-6495-4762-ADEF-5835827F97FD}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{63338F5B-7858-40D2-8D25-45DFF0879187}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS", "Shared\CQRS\CQRS.csproj", "{D9083D81-E773-4535-8157-B535C2D561D1}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C78F6F33-39FE-47D5-8F05-06BFFDBF8543}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,26 +13,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1B256174-54F9-4C94-B819-B5347D890FC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B256174-54F9-4C94-B819-B5347D890FC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1B256174-54F9-4C94-B819-B5347D890FC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B256174-54F9-4C94-B819-B5347D890FC7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D52D3875-6495-4762-ADEF-5835827F97FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D52D3875-6495-4762-ADEF-5835827F97FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D52D3875-6495-4762-ADEF-5835827F97FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D52D3875-6495-4762-ADEF-5835827F97FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D9083D81-E773-4535-8157-B535C2D561D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D9083D81-E773-4535-8157-B535C2D561D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D9083D81-E773-4535-8157-B535C2D561D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D9083D81-E773-4535-8157-B535C2D561D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B566CB2-E570-4330-9D5C-86ADA22A172A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B566CB2-E570-4330-9D5C-86ADA22A172A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B566CB2-E570-4330-9D5C-86ADA22A172A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B566CB2-E570-4330-9D5C-86ADA22A172A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C78F6F33-39FE-47D5-8F05-06BFFDBF8543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C78F6F33-39FE-47D5-8F05-06BFFDBF8543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C78F6F33-39FE-47D5-8F05-06BFFDBF8543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C78F6F33-39FE-47D5-8F05-06BFFDBF8543}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{1B256174-54F9-4C94-B819-B5347D890FC7} = {9D2D8847-D2F9-419B-8A14-CDD5688DFC13}
-		{D52D3875-6495-4762-ADEF-5835827F97FD} = {9D2D8847-D2F9-419B-8A14-CDD5688DFC13}
-		{D9083D81-E773-4535-8157-B535C2D561D1} = {63338F5B-7858-40D2-8D25-45DFF0879187}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E1B24C2A-631C-4B62-8E82-6A8D86D0523D}

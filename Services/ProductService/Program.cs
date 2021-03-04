@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Curbside.Services.FlyerService.Api
+namespace ProductService
 {
     public class Program
     {

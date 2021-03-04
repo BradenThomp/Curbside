@@ -1,0 +1,30 @@
+version: '3.4'
+
+networks:
+  productservice-dev:
+    driver: bridge
+
+services:
+  productservice:
+    image: ${DOCKER_REGISTRY-}productservice
+    build:
+      context: .
+      dockerfile: ProductService/Dockerfile
+    environment:
+      DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=productservicedb;username=developer;password=developer"
+    networks:
+      - productservice-dev
+
+  productservice_postgres:
+    image: postgres:latest
+    ports:
+      - "5432"
+    restart: always
+    volumes:
+      - ./ProductService/Persistence/Scripts/seed.sql :/docker-entrypoint-initdb.d/seed.sql
+    environment:
+      POSTGRES_USER: "developer"
+      POSTGRES_PASSWORD: "developer"
+      POSTGRES_DB: "productservicedb"
+    networks:
+      - productservice-dev
