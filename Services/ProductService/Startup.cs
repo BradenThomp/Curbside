@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using MediatR;
 using System.Reflection;
+using ProductService.Persistence;
 
 namespace ProductService
 {
@@ -24,7 +25,7 @@ namespace ProductService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddTransient<ProductContext>();
             services.AddControllers();
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddSwaggerGen(c =>

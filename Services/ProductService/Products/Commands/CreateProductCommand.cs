@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using ProductService.Models;
+using ProductService.Persistence;
 
 namespace ProductService.Products.Commands
 {
@@ -17,9 +16,11 @@ namespace ProductService.Products.Commands
 
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, Guid>
     {
-        public CreateProductCommandHandler()
-        {
+        private readonly ProductContext _context;
 
+        public CreateProductCommandHandler(ProductContext context)
+        {
+            _context = context;
         }
 
         public async Task<Guid> Handle(CreateProductCommand command, CancellationToken cancellationToken)
@@ -33,6 +34,8 @@ namespace ProductService.Products.Commands
                 ExternalId = command.ExternalId,
                 SystemId = systemId,
             };
+
+            await _context.InsertProduct(product);
 
             return systemId;
         }

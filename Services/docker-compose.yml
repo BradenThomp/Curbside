@@ -11,7 +11,7 @@ services:
       context: .
       dockerfile: ProductService/Dockerfile
     environment:
-      DB_CONNECTION_STRING: "host=postgres_image;port=5432;database=productservicedb;username=developer;password=developer"
+      DB_CONNECTION_STRING: "host=productservice_postgres;port=5432;database=productservicedb;username=developer;password=developer"
     networks:
       - productservice-dev
 
@@ -21,10 +21,13 @@ services:
       - "5432"
     restart: always
     volumes:
-      - ./ProductService/Persistence/Scripts/seed.sql :/docker-entrypoint-initdb.d/seed.sql
+      - ./ProductService/Persistence/Scripts/seed.sql:/docker-entrypoint-initdb.d/seed.sql
     environment:
       POSTGRES_USER: "developer"
       POSTGRES_PASSWORD: "developer"
       POSTGRES_DB: "productservicedb"
     networks:
       - productservice-dev
+
+volumes:
+  productservice_postgres_volume:
